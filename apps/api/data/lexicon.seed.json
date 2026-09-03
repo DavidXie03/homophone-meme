@@ -1,0 +1,88 @@
+[
+  {
+    "id": "squirtle",
+    "displayName": "杰尼龟",
+    "pack": "宝可梦",
+    "category": "游戏角色",
+    "description": "宝可梦中的水属性角色 Squirtle。",
+    "imageUrl": "/entities/squirtle-official.png",
+    "source": "PokeAPI official artwork",
+    "licenseStatus": "prototype",
+    "enabled": true,
+    "popularity": 96,
+    "triggers": [
+      { "id": "squirtle-prefix", "text": "杰尼", "kind": "prefix", "weight": 18 },
+      { "id": "squirtle-full", "text": "杰尼龟", "kind": "full", "weight": 8 }
+    ],
+    "createdAt": "2026-08-31T00:00:00.000Z",
+    "updatedAt": "2026-08-31T00:00:00.000Z"
+  },
+  {
+    "id": "bonk-choy",
+    "displayName": "菜问",
+    "pack": "植物大战僵尸",
+    "category": "游戏角色",
+    "description": "植物大战僵尸中的拳击白菜 Bonk Choy。",
+    "imageUrl": "/entities/bonk-choy-official.png",
+    "source": "Plants vs. Zombies Wiki HD artwork",
+    "licenseStatus": "prototype",
+    "enabled": true,
+    "popularity": 86,
+    "triggers": [
+      { "id": "bonk-choy-full", "text": "菜问", "kind": "full", "weight": 18 }
+    ],
+    "createdAt": "2026-08-31T00:00:00.000Z",
+    "updatedAt": "2026-08-31T00:00:00.000Z"
+  },
+  {
+    "id": "pork-muffin",
+    "displayName": "猪柳蛋堡",
+    "pack": "麦当劳",
+    "category": "餐饮单品",
+    "description": "早餐菜单中的猪柳蛋堡。",
+    "imageUrl": "/entities/pork-muffin-photo.webp",
+    "source": "用户提供梗图产品图",
+    "licenseStatus": "prototype",
+    "enabled": true,
+    "popularity": 88,
+    "triggers": [
+      { "id": "pork-muffin-prefix", "text": "猪柳", "kind": "prefix", "weight": 20 }
+    ],
+    "createdAt": "2026-08-31T00:00:00.000Z",
+    "updatedAt": "2026-08-31T00:00:00.000Z"
+  },
+  {
+    "id": "hash-brown",
+    "displayName": "薯饼",
+    "pack": "麦当劳",
+    "category": "餐饮单品",
+    "description": "麦当劳早餐中的脆薯饼。",
+    "imageUrl": "/entities/hash-brown-photo.webp",
+    "source": "用户提供梗图产品图",
+    "licenseStatus": "prototype",
+    "enabled": true,
+    "popularity": 92,
+    "triggers": [
+      { "id": "hash-brown-full", "text": "薯饼", "kind": "full", "weight": 20 }
+    ],
+    "createdAt": "2026-08-31T00:00:00.000Z",
+    "updatedAt": "2026-08-31T00:00:00.000Z"
+  },
+  {
+    "id": "chicken-burger",
+    "displayName": "鸡腿堡",
+    "pack": "麦当劳",
+    "category": "餐饮单品",
+    "description": "板烧鸡腿堡。",
+    "imageUrl": "/entities/chicken-burger-photo.webp",
+    "source": "用户提供梗图产品图",
+    "licenseStatus": "prototype",
+    "enabled": true,
+    "popularity": 90,
+    "triggers": [
+      { "id": "chicken-burger-full", "text": "鸡腿堡", "kind": "full", "weight": 20 }
+    ],
+    "createdAt": "2026-08-31T00:00:00.000Z",
+    "updatedAt": "2026-08-31T00:00:00.000Z"
+  }
+]

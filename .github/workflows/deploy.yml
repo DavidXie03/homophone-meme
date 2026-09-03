@@ -1,0 +1,50 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+concurrency:
+  group: production
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+  deployments: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      D1_DATABASE_ID: ${{ secrets.D1_DATABASE_ID }}
+      ADMIN_API_TOKEN: ${{ secrets.ADMIN_API_TOKEN }}
+      TENCENTCLOUD_SECRET_ID: ${{ secrets.TENCENTCLOUD_SECRET_ID }}
+      TENCENTCLOUD_SECRET_KEY: ${{ secrets.TENCENTCLOUD_SECRET_KEY }}
+      TURNSTILE_SECRET_KEY: ${{ secrets.TURNSTILE_SECRET_KEY }}
+      CF_WORKER_NAME: ${{ vars.CF_WORKER_NAME }}
+      CF_WEB_PROJECT: ${{ vars.CF_WEB_PROJECT }}
+      CF_ADMIN_PROJECT: ${{ vars.CF_ADMIN_PROJECT }}
+      D1_DATABASE_NAME: ${{ vars.D1_DATABASE_NAME }}
+      R2_BUCKET: ${{ vars.R2_BUCKET }}
+      PUBLIC_WEB_URL: ${{ vars.PUBLIC_WEB_URL }}
+      ADMIN_PUBLIC_URL: ${{ vars.ADMIN_PUBLIC_URL }}
+      API_ORIGIN: ${{ vars.API_ORIGIN }}
+      WEB_ORIGINS: ${{ vars.WEB_ORIGINS }}
+      ADMIN_ORIGINS: ${{ vars.ADMIN_ORIGINS }}
+      NEXT_PUBLIC_AUTHOR_MARK: ${{ vars.NEXT_PUBLIC_AUTHOR_MARK }}
+      OCR_PROVIDER: ${{ vars.OCR_PROVIDER || 'tencent' }}
+      TENCENTCLOUD_REGION: ${{ vars.TENCENTCLOUD_REGION || 'ap-guangzhou' }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Verify and deploy
+        run: npm run deploy

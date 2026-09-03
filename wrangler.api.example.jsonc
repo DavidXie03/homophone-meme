@@ -1,0 +1,28 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "homophone-meme-api",
+  "main": "apps/api/src/worker.ts",
+  "compatibility_date": "2026-09-02",
+  "compatibility_flags": ["nodejs_compat"],
+  "vars": {
+    "OCR_PROVIDER": "mock",
+    "TENCENTCLOUD_REGION": "ap-guangzhou",
+    "PUBLIC_WEB_URL": "https://<public-project>.pages.dev",
+    "WEB_ORIGINS": "https://<public-project>.pages.dev",
+    "ADMIN_ORIGINS": "https://<admin-project>.pages.dev"
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "homophone-meme-db",
+      "database_id": "<D1_DATABASE_ID>",
+      "migrations_dir": "apps/api/migrations"
+    }
+  ],
+  "r2_buckets": [
+    {
+      "binding": "ASSETS",
+      "bucket_name": "homophone-meme-assets"
+    }
+  ]
+}
