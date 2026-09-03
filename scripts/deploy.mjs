@@ -7,7 +7,7 @@ config({ path: ".env.deploy.local", quiet: true, override: true })
 
 const target = process.argv[2] || "all"
 if (!["all", "api", "web", "admin"].includes(target)) {
-  throw new Error("部署目标只能是 all、api、web 或 admin")
+  throw new Error("Deploy target must be one of: all, api, web, admin")
 }
 
 const npm = process.platform === "win32" ? "npm.cmd" : "npm"
@@ -33,13 +33,13 @@ function run(command, args, input) {
   })
   if (result.error) throw result.error
   if (result.status !== 0) {
-    throw new Error(`${args.join(" ")} 执行失败`)
+    throw new Error(`${args.join(" ")} failed`)
   }
 }
 
 function required(name) {
   const value = environment[name]?.trim()
-  if (!value) throw new Error(`缺少部署变量 ${name}`)
+  if (!value) throw new Error(`Missing deploy variable: ${name}`)
   return value
 }
 

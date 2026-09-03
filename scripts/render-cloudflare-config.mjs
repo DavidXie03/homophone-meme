@@ -15,7 +15,7 @@ const databaseName = process.env.D1_DATABASE_NAME || "homophone-meme-db"
 
 function required(name) {
   const value = process.env[name]?.trim()
-  if (!value) throw new Error(`缺少部署变量 ${name}`)
+  if (!value) throw new Error(`Missing deploy variable: ${name}`)
   return value
 }
 
@@ -29,14 +29,14 @@ function resolveDatabaseId() {
   })
   if (result.status !== 0) {
     throw new Error(
-      "无法查询 D1；请重新执行 wrangler login 或设置 D1_DATABASE_ID",
+      "Unable to query D1; run wrangler login or set D1_DATABASE_ID",
     )
   }
   const databases = JSON.parse(result.stdout)
   const database = databases.find((item) => item.name === databaseName)
   const id = database?.uuid || database?.id
   if (!id) {
-    throw new Error(`没有找到 D1 数据库 ${databaseName}`)
+    throw new Error(`D1 database not found: ${databaseName}`)
   }
   return id
 }
@@ -81,4 +81,4 @@ writeFileSync(
   ".wrangler/wrangler.api.json",
   `${JSON.stringify(configuration, null, 2)}\n`,
 )
-console.log("已生成 .wrangler/wrangler.api.json")
+console.log("Generated .wrangler/wrangler.api.json")

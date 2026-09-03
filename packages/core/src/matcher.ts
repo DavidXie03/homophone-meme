@@ -128,10 +128,12 @@ function buildHit(
     score,
     toneSimilarity: similarity,
     reasons: [
-      "无调拼音完全相同",
-      `${indexed.syllableCount} 个连续汉字`,
-      differentGlyphs ? "字形不同，有反差" : "字形相同，反差较弱",
-      `词库权重 ${indexed.trigger.weight}`,
+      "Identical toneless pinyin",
+      `${indexed.syllableCount} consecutive Han characters`,
+      differentGlyphs
+        ? "Different glyphs (higher contrast)"
+        : "Same glyphs (weaker contrast)",
+      `Lexicon weight ${indexed.trigger.weight}`,
     ],
   }
 }
